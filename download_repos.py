@@ -23,6 +23,6 @@ if 'output' not in os.listdir():
     os.makedirs('output')
 
 
-repo_names = [repo[0] for repo in repositories]
+repo_names = [repo[0] for repo in repositories if repo[2]=="Rust"]
 Parallel(n_jobs=40, prefer="threads")(
     delayed(download_repo)(name) for name in tqdm(repo_names))
